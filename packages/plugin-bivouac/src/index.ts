@@ -1,5 +1,6 @@
 import { Character, Plugin } from "@elizaos/core";
-import { poseidon } from "./characters/poseidon";
+import { poseidon } from "./bivouac-characters/poseidon";
+import { claude } from "./bivouac-characters/claude";
 
 export const bivouacPlugin: Plugin = {
     name: "bivouac",
@@ -9,6 +10,6 @@ export const bivouacPlugin: Plugin = {
     providers: [],
 };
 
-export const bivouacCharacters: Character[] = [poseidon];
+export const bivouacCharacters: Character[] = [poseidon, claude];
 
 export default bivouacPlugin;

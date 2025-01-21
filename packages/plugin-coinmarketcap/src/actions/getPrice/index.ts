@@ -77,13 +77,13 @@ export default {
                     content.symbol,
                     content.currency
                 );
-                elizaLogger.success(
-                    `Price retrieved successfully! ${content.symbol}: ${priceData.price} ${content.currency.toUpperCase()}`
-                );
+                const text = `The current price of ${content.symbol} is ${priceData.price.toFixed(2)} ${content.currency.toUpperCase()} Other data: Volume (${priceData.volume24h.toFixed(2)}) | Market Cap (${priceData.marketCap.toFixed(2)}) | 24h Change (${priceData.percentChange24h.toFixed(2)}%)`;
+
+                elizaLogger.success(text);
 
                 if (callback) {
                     callback({
-                        text: `The current price of ${content.symbol} is ${priceData.price} ${content.currency.toUpperCase()}`,
+                        text,
                         content: {
                             symbol: content.symbol,
                             currency: content.currency,

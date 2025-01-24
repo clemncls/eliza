@@ -9,10 +9,17 @@ import {
 import { auctionExamples } from "./examples";
 import { createAuctionService } from "./service";
 
-export default {
+export const auctionCheck: Action = {
     name: "AUCTION_CHECK",
     description: "Check last auction that happenned on hyperliquid",
-    similes: ["GET_AUCTION", "CHECK_AUCTION", "LAST_AUCTION", "CHECK_LAUNCH", "TOKEN_LAUNCH", "LAST_LAUNCHPAD"],
+    similes: [
+        "GET_AUCTION",
+        "CHECK_AUCTION",
+        "LAST_AUCTION",
+        "CHECK_LAUNCH",
+        "TOKEN_LAUNCH",
+        "LAST_LAUNCHPAD",
+    ],
     handler: async (
         runtime: IAgentRuntime,
         message: Memory,
@@ -58,8 +65,8 @@ export default {
             return false;
         }
     },
-    validate: async (context) => {
+    validate: async () => {
         return true;
     },
-    examples: auctionExamples
-} as Action;
+    examples: auctionExamples,
+};

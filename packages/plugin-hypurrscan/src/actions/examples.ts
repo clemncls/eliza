@@ -15,12 +15,6 @@ export const auctionExamples: ActionExample[][] = [
                 action: "AUCTION_CHECK",
             },
         },
-        {
-            user: "{{agent}}",
-            content: {
-                text: "The last auction winner on Hyperliqui were HFUN, LICK and MANLET",
-            },
-        },
     ],
     [
         {
@@ -34,12 +28,6 @@ export const auctionExamples: ActionExample[][] = [
             content: {
                 text: "I'll get you the last few token that were launhed on hyperliquid",
                 action: "AUCTION_CHECK",
-            },
-        },
-        {
-            user: "{{agent}}",
-            content: {
-                text: "The last token launched on Hyperliqui are HFUN, LICK and MANLET",
             },
         },
     ],

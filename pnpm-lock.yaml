@@ -3037,6 +3037,9 @@ importers:
       '@elizaos/core':
         specifier: workspace:*
         version: link:../core
+      'axios':
+        specifier: ^1.7.9
+        version: 1.7.9(debug@4.4.0)
     devDependencies:
       tsup:
         specifier: 8.3.5

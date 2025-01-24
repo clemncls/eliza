@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ApiResponse, AuctionData } from "./types";
+import { elizaLogger } from "@elizaos/core";
 
 const BASE_URL = "https://api.hypurrscan.io";
 
@@ -12,20 +13,9 @@ export const createAuctionService = () => {
     });
 
     const getAuction = async (): Promise<AuctionData> => {
-
         try {
-            const response = await client.get<ApiResponse>(
-                "/pastAuctions"
-            );
-
-            const { data } = response.data;
-
-            return {
-                time: data.time,
-                deployer: data.deployer,
-                name: data.name,
-                deployGas: data.deployGas,
-            };
+            const response = await client.get<AuctionData[]>( "/pastAuctions");
+            return response.data.at(-1);
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 const errorMessage =

@@ -61,6 +61,7 @@
         "@elizaos/plugin-gitbook": "workspace:*",
         "@elizaos/plugin-goat": "workspace:*",
         "@elizaos/plugin-hyperliquid": "workspace:*",
+        "@elizaos/plugin-hypurrscan": "workspace:*",
         "@elizaos/plugin-icp": "workspace:*",
         "@elizaos/plugin-image-generation": "workspace:*",
         "@elizaos/plugin-intiface": "workspace:*",

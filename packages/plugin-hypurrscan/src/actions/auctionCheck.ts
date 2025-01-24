@@ -9,7 +9,7 @@ import {
 import { auctionExamples } from "./examples";
 import { createAuctionService } from "./service";
 
-export const auctionCheck: Action = {
+export default {
     name: "AUCTION_CHECK",
     description: "Check last auction that happenned on hyperliquid",
     similes: ["GET_AUCTION", "CHECK_AUCTION", "LAST_AUCTION", "CHECK_LAUNCH", "TOKEN_LAUNCH", "LAST_LAUNCHPAD"],
@@ -62,4 +62,4 @@ export const auctionCheck: Action = {
         return true;
     },
     examples: auctionExamples
-}
+} as Action;

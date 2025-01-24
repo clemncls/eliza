@@ -14,8 +14,7 @@ export default defineConfig({
         "@node-llama-cpp",
         "https",
         "http",
-        "agentkeepalive",
-        "safe-buffer",
+        "agentkeepalive"
         // Add other modules you want to externalize
     ],
 });

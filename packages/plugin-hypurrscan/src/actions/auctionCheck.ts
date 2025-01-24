@@ -1,0 +1,65 @@
+import {
+    elizaLogger,
+    HandlerCallback,
+    IAgentRuntime,
+    Memory,
+    State,
+    type Action,
+} from "@elizaos/core";
+import { auctionExamples } from "./examples";
+import { createAuctionService } from "./service";
+
+export const auctionCheck: Action = {
+    name: "AUCTION_CHECK",
+    description: "Check last auction that happenned on hyperliquid",
+    similes: ["GET_AUCTION", "CHECK_AUCTION", "LAST_AUCTION", "CHECK_LAUNCH", "TOKEN_LAUNCH", "LAST_LAUNCHPAD"],
+    handler: async (
+        runtime: IAgentRuntime,
+        message: Memory,
+        state: State,
+        _options: { [key: string]: unknown },
+        callback?: HandlerCallback
+    ): Promise<boolean> => {
+        elizaLogger.log("Starting Hypurrscan get auction handler...");
+
+        // Initialize or update state
+        if (!state) {
+            state = (await runtime.composeState(message)) as State;
+        } else {
+            state = await runtime.updateRecentMessageState(state);
+        }
+
+        try {
+            const auctionService = createAuctionService();
+            const auctionData = await auctionService.getAuction();
+
+            const text = `The last auction was ${auctionData.name}. It was deployed by ${auctionData.deployer} for ${auctionData.deployGas} gaz at timestamp ${auctionData.time}.`;
+
+            elizaLogger.success(text);
+
+            if (callback) {
+                callback({
+                    text,
+                    content: {
+                        auctionData,
+                    },
+                });
+            }
+
+            return true;
+        } catch (error) {
+            elizaLogger.error("Error in AUCTION_CHECK handler:", error);
+            if (callback) {
+                callback({
+                    text: `Error fetching auction: ${error.message}`,
+                    content: { error: error.message },
+                });
+            }
+            return false;
+        }
+    },
+    validate: async (context) => {
+        return true;
+    },
+    examples: auctionExamples
+}

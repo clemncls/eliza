@@ -32,3 +32,36 @@ export const auctionExamples: ActionExample[][] = [
         },
     ],
 ];
+
+export const rankAddressExamples: ActionExample[][] = [
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Check the rank of hyperliquid adress",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll look for the rank of that hyperliquid address",
+                action: "RANK_ADDRESS",
+            },
+        },
+    ],
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Get the rank of the following hyperliquid account",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll get you the ranking of tokens for this hyperliquid account",
+                action: "RANK_ADDRESS",
+            },
+        },
+    ],
+];

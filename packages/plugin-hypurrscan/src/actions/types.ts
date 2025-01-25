@@ -1,3 +1,4 @@
+import { Content } from "@elizaos/core";
 
 export interface AuctionData {
     time: number;
@@ -6,11 +7,6 @@ export interface AuctionData {
     deployGas: string;
 }
 
-export interface ApiResponse {
-    data: {
-        time: number;
-        deployer: string;
-        name: string;
-        deployGas: string;
-    };
+export interface GetAddressContent extends Content {
+    address: string;
 }

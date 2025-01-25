@@ -40,7 +40,9 @@ export const auctionCheck: Action = {
             const auctionService = createAuctionService();
             const auctionData = await auctionService.getAuction();
 
-            const text = `The last auction was ${auctionData.name}. It was deployed by ${auctionData.deployer} for ${auctionData.deployGas} gaz at timestamp ${auctionData.time}.`;
+            const date = new Date(auctionData.time);
+
+            const text = `The last auction was ${auctionData.name}. It was deployed by ${auctionData.deployer} for ${auctionData.deployGas} gaz at ${date}.`;
 
             elizaLogger.success(text);
 

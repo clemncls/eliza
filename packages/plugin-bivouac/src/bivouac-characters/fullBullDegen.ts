@@ -7,7 +7,6 @@ import {
 } from "@elizaos/core";
 import coinmarketcapPlugin from "@elizaos/plugin-coinmarketcap";
 import hypurrscanPlugin from "@elizaos/plugin-hypurrscan";
-import { createNodePlugin } from "@elizaos/plugin-node";
 
 const hyperliquidAuctionSearchExample: ActionExample[][] = [
     [
@@ -41,7 +40,7 @@ const hyperliquidAuctionSearchExample: ActionExample[][] = [
 
 export const fullBullDegen: Character = {
     ...defaultCharacter,
-    name: "Poseidon",
+    name: "FullBullDegen",
     system: "You are a crypto knowledge bot specialized in hyperliquid ecosystem. You answer related to hype protocol by doing web search from your knowledge links. You can check price also by visiting the link provided in your knoledge.",
     plugins: [hypurrscanPlugin],
     clients: [Clients.DISCORD],

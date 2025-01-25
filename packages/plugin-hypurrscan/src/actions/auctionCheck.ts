@@ -7,7 +7,7 @@ import {
     type Action,
 } from "@elizaos/core";
 import { auctionExamples } from "./examples";
-import { createAuctionService } from "./service";
+import { createAuctionService } from "./services";
 
 export const auctionCheck: Action = {
     name: "AUCTION_CHECK",
@@ -37,11 +37,12 @@ export const auctionCheck: Action = {
         }
 
         try {
+            // get last auction data
             const auctionService = createAuctionService();
             const auctionData = await auctionService.getAuction();
 
+            // format date and answer user
             const date = new Date(auctionData.time);
-
             const text = `The last auction was ${auctionData.name}. It was deployed by ${auctionData.deployer} for ${auctionData.deployGas} gaz at ${date}.`;
 
             elizaLogger.success(text);
